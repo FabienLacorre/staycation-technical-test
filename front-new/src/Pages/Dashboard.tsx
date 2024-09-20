@@ -25,9 +25,6 @@ export const Dashboard = (): JSX.Element => {
     dispatch(getAllHotelThunk());
   }, []);
 
-  if (hotelListMetaData.apiStatus === ApiStatus.LOADING) {
-  }
-
   return (
     <Content>
       <>
@@ -62,3 +59,36 @@ export const Dashboard = (): JSX.Element => {
     </Content>
   );
 };
+
+
+// select * from rooms r 
+
+// select * from sale_dates sd where id = 20
+
+// select * from openings o 
+
+
+// SELECT DISTINCT ON (hotels."name") 
+//     hotels."name", 
+//     openings."date", 
+//     rooms."name", 
+//     openings."discount_price",
+//     openings."price",
+//     openings.stock,
+//     rooms.id as room_id
+// FROM "hotels"
+// LEFT JOIN "rooms" ON "rooms"."hotel_id" = hotels."id"
+// LEFT JOIN "openings" ON "openings"."room_id" = "rooms"."id"
+// ORDER BY hotels."name", openings."discount_price" ASC, openings."date" DESC;
+
+// select * from openings 
+// LEFT JOIN "rooms" ON "rooms"."id" = openings."room_id"
+// left join hotels on hotels.id = rooms.hotel_id
+// where hotel_id = 10
+
+// where room_id  = 49
+
+// select * from rooms 
+// inner join hotels on hotels.id = rooms.hotel_id 
+// where rooms.id = 49
+
