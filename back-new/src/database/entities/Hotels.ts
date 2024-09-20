@@ -1,4 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  ManyToOne,
+  JoinColumn,
+  OneToMany,
+} from "typeorm";
+import { Reviews } from "./Reviews";
 
 @Entity()
 export class Hotels {
@@ -16,4 +25,8 @@ export class Hotels {
 
   @Column()
   picture_id: string;
+
+  @OneToMany(() => Reviews, (review) => review.hotel)
+  @JoinColumn()
+  review: Reviews;
 }

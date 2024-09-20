@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  ManyToOne,
+  JoinColumn,
+} from "typeorm";
+import { Hotels } from "./Hotels";
 
 @Entity()
 export class Reviews {
@@ -13,4 +21,8 @@ export class Reviews {
 
   @Column()
   score: number;
+
+  @ManyToOne(() => Hotels, (hotel) => hotel.review)
+  @JoinColumn()
+  hotel: Hotels;
 }
