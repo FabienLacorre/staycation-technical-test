@@ -10,6 +10,8 @@ export interface Hotel {
   stars: number;
   preview: string;
   picture_id: string;
+  review_score: number;
+  review_count: number;
 }
 
 export const hotelSliceInitialState: MultipleEntitiesCustomSlice<Hotel> = {

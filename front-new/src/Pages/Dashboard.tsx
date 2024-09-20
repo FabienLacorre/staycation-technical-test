@@ -22,9 +22,10 @@ export const Dashboard = (): JSX.Element => {
   const status = hotelListMetaData.apiStatus;
   const hotelList = useListSelector<Hotel>("hotel");
 
-  console.log(hotelListMetaData);
-
   useEffect(() => {
+    // there is more option to make async call with react
+    // we can use libraries like react-query to make the async call
+    // i used redux-thunk to make the async call because i want to show this architecture
     dispatch(getAllHotelThunk());
   }, []);
 
@@ -51,8 +52,8 @@ export const Dashboard = (): JSX.Element => {
                       subTitle={hotel.preview}
                       price={123}
                       oldPrice={600}
-                      meanRating={4.5}
-                      numberOfReviews={123}
+                      meanRating={hotel.review_score}
+                      numberOfReviews={hotel.review_count}
                       starsNumber={hotel.stars}
                     />
                   </Card>

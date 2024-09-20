@@ -7,10 +7,7 @@ function addFullfilledCaseForList<T>(
   state: MultipleEntitiesCustomSlice<T>,
   action: PayloadAction<T>
 ) {
-
-  console.log(action);
   const idList = (action.payload as T[]).map((item: any) => item.id);
-
   // ID LIST
   state.idList = idList;
   // DATA
@@ -47,7 +44,7 @@ function addPendingCaseMultipleEntities<T>(
 
 function addRejectedCaseMultipleEntities<T>(
   state: MultipleEntitiesCustomSlice<T>,
-  action: any
+  _action: any
 ) {
   state.idList = [];
   state.dataMap = {};

@@ -21,3 +21,19 @@ export function useSelectorGlobalMetaData<T>(
     return slice.metaData;
   });
 }
+
+export function useSelectorSingle<T>(
+  sliceName: keyof ConfigureStoreEntitiesList
+): T {
+  return useSelector((state: RootState) => {
+    return (state[sliceName] as any).data;
+  }) as T;
+}
+
+export function useSelectorSingleMetaData<T>(
+  sliceName: keyof ConfigureStoreEntitiesList
+) {
+  return useSelector((state: RootState) => {
+    return (state[sliceName] as any).metaData;
+  });
+}

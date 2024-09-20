@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import StaycationLogo from "../Atoms/StaycationLogo";
 import "./Header.scss";
 import { Typography } from "../Atoms/Typography";
+import { useAppDispatch } from "../../Stores/store";
+import { getUserById } from "../../Thunks/userThunks";
+import {
+  useSelectorSingle,
+  useSelectorSingleMetaData,
+} from "../../Stores/selectors";
+import { User } from "../../Stores/UserSlice";
+import { NO_VALUES } from "../../Utils/formatReview";
+import { ApiStatus } from "../../Types/ApiStatus";
 
 // interface User {
 //   firstName?: string;
@@ -19,18 +28,14 @@ const Header = ({
   classNameCenterWrapper: classNameCenterWrapperProps,
   classNameUserHello: classNameUserHelloProps,
 }: HeaderProps) => {
-  // const [user, setUser] = useState<User>();
+  const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   fetch("http://localhost:9000/users/1")
-  //     .then(async (res: any) => {
-  //       const result = await res.json();
-  //       setUser(result);
-  //     })
-  //     .catch((e: any) => console.warn("Error: ", e));
-  // }, []);
+  const user = useSelectorSingle<User>("user");
+  const useMetaData = useSelectorSingleMetaData<User>("user");
 
-  // {user && <div className="header__user">Welcome, {user.firstName}!</div>}
+  useEffect(() => {
+    dispatch(getUserById(1));
+  }, []);
 
   const className = clsx("ds-c-header", classNameProps);
   const classNameUserHello = clsx(
@@ -45,10 +50,25 @@ const Header = ({
   return (
     <div className={className}>
       <div className={classNameCenterWrapper}>
+        {/* LOGO */}
         <StaycationLogo />
-        <Typography isBold size="S" className={classNameUserHello}>
-          Welcome, fabien!
-        </Typography>
+
+        {/* USER DISPLAY */}
+        {useMetaData.apiStatus === ApiStatus.LOADING ? (
+          <Typography isBold size="S" className={classNameUserHello}>
+            {`Loading...`}
+          </Typography>
+        ) : null}
+        {useMetaData.apiStatus === ApiStatus.FAILED ? (
+          <Typography isBold size="S" className={classNameUserHello}>
+            {`Failed...`}
+          </Typography>
+        ) : null}
+        {useMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
+          <Typography isBold size="S" className={classNameUserHello}>
+            {`Welcome, ${user.first_name ?? NO_VALUES}!`}
+          </Typography>
+        ) : null}
       </div>
     </div>
   );

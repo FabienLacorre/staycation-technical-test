@@ -15,11 +15,6 @@ export interface SliceDataList<T> {
   };
 }
 
-export interface SliceData<T> {
-  data: T;
-  metaData: CustomMetaData;
-}
-
 export interface MultipleEntitiesCustomSlice<T> {
   idList: (number | string)[];
   metaData: CustomMetaData;
@@ -27,7 +22,6 @@ export interface MultipleEntitiesCustomSlice<T> {
 }
 
 export interface SingleEntityCustomSlice<T> {
-  idList: (number | string)[];
+  data: T;
   metaData: CustomMetaData;
-  dataMap: SliceData<T>;
 }

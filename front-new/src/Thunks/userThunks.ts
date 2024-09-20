@@ -1,18 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { createUser, login } from "../Api/user";
+import { fetchUserById } from "../Api/get";
 
-export const loginThunk = createAsyncThunk(
-  "api/user/login",
-  async (params: { email: string; password: string }) => {
-    const response = await login(params);
-    return response.data;
-  }
-);
-
-export const createUserThunk = createAsyncThunk(
-  "api/user/create",
-  async (params: { email: string; password: string }) => {
-    const response = await createUser(params);
+export const getUserById = createAsyncThunk(
+  "api/user/get/byId",
+  async (userId: number) => {
+    const response = await fetchUserById(userId);
     return response.data;
   }
 );

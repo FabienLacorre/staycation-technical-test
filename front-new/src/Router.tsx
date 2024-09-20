@@ -5,7 +5,6 @@ import { forOwn } from "lodash";
 
 export enum PageKeyEnum {
   HOME = "HOME",
-  TEST_PAGE = "TEST_PAGE",
 }
 
 export const pageConfiguration = {

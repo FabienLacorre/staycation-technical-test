@@ -3,6 +3,7 @@ import { formatRatingAndReview } from "../Utils/formatRatingAndReview";
 import { PriceDisplayer } from "./PriceDisplayer";
 
 import "./HotelDescription.scss";
+import { formatReview } from "../Utils/formatReview";
 
 export interface HotelDescriptionProps {
   title: string;
@@ -39,7 +40,7 @@ export const HotelDescription = ({
           size="S"
           className="staycation-c-hotel-desction__rating-typography"
         >
-          {formatRatingAndReview(meanRating, numberOfReviews)}
+          {formatRatingAndReview(formatReview(meanRating), numberOfReviews)}
         </Typography>
       </div>
       <Typography size="S">{subTitle}</Typography>
