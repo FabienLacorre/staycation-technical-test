@@ -1,12 +1,72 @@
 import clsx from "clsx";
 import { Content } from "../Components/Atoms/Content";
+import { Card } from "../Components/Molecules/Card";
 
 export const Dashboard = (): JSX.Element => {
-  const contentClassName = clsx("content", "full-height");
-
   return (
-    <Content className={contentClassName}>
-      <div style={{ height: 4000 }}>TEST ICI CODE</div>
+    <Content>
+      <div className="grid-container">
+        <div className="grid-item">
+          <Card
+            imageUlr={"https://picsum.photos/200/300"}
+            title={"Hotel du rond point des champs elysées"}
+            subTitle={"Petit dej + champagne + cocktail inclus"}
+            price={"160€"}
+            oldPrice={"100€"}
+            reduction={"21%"}
+          />
+        </div>
+        <div className="grid-item">
+          <Card
+            imageUlr={"https://picsum.photos/200/300"}
+            title={"Hotel du rond point des champs elysées"}
+            subTitle={"Petit dej + champagne + cocktail inclus"}
+            price={"160€"}
+            oldPrice={"100€"}
+            reduction={"21%"}
+          />
+        </div>
+        <div className="grid-item">
+          <Card
+            imageUlr={"https://picsum.photos/200/300"}
+            title={"Hotel du rond point des champs elysées"}
+            subTitle={"Petit dej + champagne + cocktail inclus"}
+            price={"160€"}
+            oldPrice={"100€"}
+            reduction={"21%"}
+          />
+        </div>
+        <div className="grid-item">
+          <Card
+            imageUlr={"https://picsum.photos/200/300"}
+            title={"Hotel du rond point des champs elysées"}
+            subTitle={"Petit dej + champagne + cocktail inclus"}
+            price={"160€"}
+            oldPrice={"100€"}
+            reduction={"21%"}
+          />
+        </div>
+        <div className="grid-item">
+          <Card
+            imageUlr={"https://picsum.photos/200/300"}
+            title={"Hotel du rond point des champs elysées"}
+            subTitle={"Petit dej + champagne + cocktail inclus"}
+            price={"160€"}
+            oldPrice={"100€"}
+            reduction={"21%"}
+          />
+        </div>
+        <div className="grid-item">
+          <Card
+            imageUlr={"https://picsum.photos/200/300"}
+            title={"Hotel du rond point des champs elysées"}
+            subTitle={"Petit dej + champagne + cocktail inclus"}
+            price={"160€"}
+            oldPrice={"100€"}
+            reduction={"21%"}
+          />
+        </div>
+      </div>
     </Content>
   );
 };

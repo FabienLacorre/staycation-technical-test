@@ -45,8 +45,8 @@ const Header = ({
     <div className={className}>
       <div className={classNameCenterWrapper}>
         <StaycationLogo />
+        <div className={classNameUserHello}>Welcome, fabien!</div>
       </div>
-      <div className={classNameUserHello}>Welcome, fabien!</div>
     </div>
   );
 };

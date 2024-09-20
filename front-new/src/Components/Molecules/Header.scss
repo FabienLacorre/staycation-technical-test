@@ -2,13 +2,14 @@
 @import "../Quarks/size.scss";
 
 .ds-c-header {
-  padding: 0 $ds-app-right-and-left-padding__L;
+  // padding: 0 $ds-app-right-and-left-padding--L;
+  // width: $ds-content-size--L;
 
   position: sticky;
   top: 0;
   height: 80px;
 
-  border-bottom: 1px solid $gray-border;
+  border-bottom: 1px solid $ds-color-gray-border;
   background: #fff;
 
   display: flex;
@@ -18,49 +19,38 @@
   .logo {
     width: 190px;
     height: 20px;
-    color: $primary;
+    color: $ds-color-primary;
   }
 }
 
 .ds-c-header--center-wrapper {
-  flex: 1;
+  position: relative;
   display: flex;
   justify-content: center;
   transition: 0.3s ease-in-out;
+  width: $ds-content-size--L;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ds-c-header--user-hello {
-  right: $ds-app-right-and-left-padding__L;
-
+  right: 0;
   position: absolute;
   font-size: 14px;
   font-weight: bold;
 }
 
-@media only screen and (max-width: $ds-break-poin__M) {
+@media only screen and (max-width: $ds-break-point--M) {
   .ds-c-header--center-wrapper {
-    flex: 0;
-  }
-
-  .ds-c-header {
-    padding: 0 $ds-app-right-and-left-padding__M;
-  }
-
-  .ds-c-header--user-hello {
-    right: $ds-app-right-and-left-padding__M;
+    width: $ds-content-size--M;
   }
 }
 
-@media only screen and (max-width: $ds-break-poin__S) {
+@media only screen and (max-width: $ds-break-point--S) {
   .ds-c-header--center-wrapper {
-    flex: 0;
-  }
-
-  .ds-c-header {
-    padding: 0 $ds-app-right-and-left-padding__S;
-  }
-
-  .ds-c-header--user-hello {
-    right: $ds-app-right-and-left-padding__S;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: $ds-padding--XL;
+    margin-right: $ds-padding--XL;
   }
 }

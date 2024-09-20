@@ -1,0 +1,17 @@
+@import "../Quarks/size.scss";
+
+.ds-c-typography--bold {
+  font-weight: bold;
+}
+
+.ds-c-typography--S {
+  font-size: $ds-typography--S;
+}
+
+.ds-c-typography--M {
+  font-size: $ds-typography--M;
+}
+
+.ds-c-typography--L {
+  font-size: $ds-typography--L;
+}

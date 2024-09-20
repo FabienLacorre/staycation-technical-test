@@ -1,0 +1,9 @@
+@import "../Quarks/size.scss";
+
+.ds-c-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  gap: $ds-padding--S;
+}
