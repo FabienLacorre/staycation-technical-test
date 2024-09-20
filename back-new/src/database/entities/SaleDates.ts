@@ -1,10 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 
 @Entity()
-export class User {
+export class SaleDates {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  first_name: string;
+  start_date: Date;
+
+  @Column()
+  end_date: Date;
+
+  @Column("date", { array: true })
+  bookable_days: Date[];
 }

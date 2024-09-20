@@ -3,7 +3,7 @@ import express from "express";
 import { AppDataSource } from "./database/data-source";
 import { routes } from "./API/router";
 
-const SERVER_PORT = 3000;
+const SERVER_PORT =3010;
 
 var bodyParser = require("body-parser");
 var cors = require("cors");

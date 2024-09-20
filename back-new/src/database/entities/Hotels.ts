@@ -1,16 +1,19 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 
 @Entity()
-export class Booking {
+export class Hotels {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  date: Date;
+  name: string;
 
   @Column()
-  user_id: number;
+  stars: number;
 
   @Column()
-  room_id: number;
+  preview: string;
+
+  @Column()
+  picture_id: string;
 }
