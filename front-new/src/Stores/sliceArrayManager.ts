@@ -7,6 +7,8 @@ function addFullfilledCaseForList<T>(
   state: MultipleEntitiesCustomSlice<T>,
   action: PayloadAction<T>
 ) {
+
+  console.log(action);
   const idList = (action.payload as T[]).map((item: any) => item.id);
 
   // ID LIST

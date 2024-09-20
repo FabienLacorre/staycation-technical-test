@@ -1,7 +1,5 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:3000";
+import { axiosClient } from "./axios";
 
 export const fetchAllHotel = async (): Promise<any> => {
-  return axios.get(`${API_URL}/hotel/all`);
+  return axiosClient.get(`/hotel/all`);
 };

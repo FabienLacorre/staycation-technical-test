@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { MultipleEntitiesCustomSlice } from "./Slice";
 import { getAllHotelThunk } from "../Thunks/HotelThunks";
 import { addFetchCaseForList } from "./sliceArrayManager";
+import { ApiStatus } from "../Types/ApiStatus";
 
 export interface Hotel {
   id: number;
@@ -13,7 +14,9 @@ export interface Hotel {
 
 export const hotelSliceInitialState: MultipleEntitiesCustomSlice<Hotel> = {
   idList: [],
-  metaData: {},
+  metaData: {
+    apiStatus: ApiStatus.IDLE,
+  },
   dataMap: {},
 };
 
