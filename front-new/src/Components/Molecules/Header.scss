@@ -1,0 +1,66 @@
+@import "../Quarks/colors.scss";
+@import "../Quarks/size.scss";
+
+.ds-c-header {
+  padding: 0 $ds-app-right-and-left-padding__L;
+
+  position: sticky;
+  top: 0;
+  height: 80px;
+
+  border-bottom: 1px solid $gray-border;
+  background: #fff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    width: 190px;
+    height: 20px;
+    color: $primary;
+  }
+}
+
+.ds-c-header--center-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+
+.ds-c-header--user-hello {
+  right: $ds-app-right-and-left-padding__L;
+
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: $ds-break-poin__M) {
+  .ds-c-header--center-wrapper {
+    flex: 0;
+  }
+
+  .ds-c-header {
+    padding: 0 $ds-app-right-and-left-padding__M;
+  }
+
+  .ds-c-header--user-hello {
+    right: $ds-app-right-and-left-padding__M;
+  }
+}
+
+@media only screen and (max-width: $ds-break-poin__S) {
+  .ds-c-header--center-wrapper {
+    flex: 0;
+  }
+
+  .ds-c-header {
+    padding: 0 $ds-app-right-and-left-padding__S;
+  }
+
+  .ds-c-header--user-hello {
+    right: $ds-app-right-and-left-padding__S;
+  }
+}

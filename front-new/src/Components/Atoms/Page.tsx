@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../Molecules/Header";
 import { Layout } from "./Layout";
 
 export const Page = ({

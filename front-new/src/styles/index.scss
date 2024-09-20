@@ -1,4 +1,5 @@
 @import "./src/Components/Quarks/colors.scss";
+@import "./src/Components/Quarks/size.scss";
 
 body {
   margin: 0;
@@ -8,4 +9,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $text;
+
+  min-width: $ds-break-poin__S;
 }
