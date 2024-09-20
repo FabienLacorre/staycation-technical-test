@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { ApiStatus } from "../../Types/ApiStatus";
 import { SingleEntityCustomSlice } from "./Slice";
-import { ApiStatus } from "../Types/ApiStatus";
 
 function addFullfilledCaseForSingle<T>(
   state: SingleEntityCustomSlice<T>,

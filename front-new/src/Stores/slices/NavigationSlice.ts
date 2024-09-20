@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { PageKeyEnum } from "../Router";
+import { PageKeyEnum } from "../../Router";
 
 // INITIAL STATES
 export interface NavigationState {

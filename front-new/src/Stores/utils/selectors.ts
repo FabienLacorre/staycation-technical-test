@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { ConfigureStoreEntitiesList, RootState } from "./store";
+import { ConfigureStoreEntitiesList, RootState } from "../store";
 import { MultipleEntitiesCustomSlice } from "./Slice";
 
 export function useSelectorList<T>(

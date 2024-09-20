@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserById } from "../Thunks/userThunks";
-import { addFetchCaseForSingle } from "./sliceSingleMananger";
-import { ApiStatus } from "../Types/ApiStatus";
+import { ApiStatus } from "../../Types/ApiStatus";
+import { addFetchCaseForSingle } from "../utils/sliceSingleMananger";
+import { getUserById } from "../../Thunks/userThunks";
 
 // INITIAL STATES
 export interface User {

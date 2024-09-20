@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userSlice, User } from "./UserSlice";
-import { navigationSlice } from "./NavigationSlice";
+import { navigationSlice } from "./slices/NavigationSlice";
 import { useDispatch } from "react-redux";
-import { hotelSlice, Hotel } from "./HotelSlice";
-import { MultipleEntitiesCustomSlice, SingleEntityCustomSlice } from "./Slice";
+import { hotelSlice, Hotel } from "./slices/HotelSlice";
+import { User, userSlice } from "./slices/UserSlice";
+import { MultipleEntitiesCustomSlice, SingleEntityCustomSlice } from "./utils/Slice";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

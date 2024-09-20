@@ -4,14 +4,17 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../Stores/store";
 import { useEffect } from "react";
 import { getAllHotelThunk } from "../Thunks/HotelThunks";
-import { useSelectorList, useSelectorListMetaData } from "../Stores/selectors";
 import { GridItem } from "../DesignSystem/Atoms/GridItem";
 import { Card } from "../DesignSystem/Molecules/Card";
 import { HotelDescription } from "../Components/HotelDescription";
-import { Hotel } from "../Stores/HotelSlice";
+import { Hotel } from "../Stores/slices/HotelSlice";
 import { Loader } from "../DesignSystem/Atoms/Laoder";
 import { ApiStatus } from "../Types/ApiStatus";
 import { Typography } from "../DesignSystem/Atoms/Typography";
+import {
+  useSelectorList,
+  useSelectorListMetaData,
+} from "../Stores/utils/selectors";
 
 export const Dashboard = (): JSX.Element => {
   const dispatch = useAppDispatch();

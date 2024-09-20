@@ -1,4 +1,4 @@
-import { ApiStatus } from "../Types/ApiStatus";
+import { ApiStatus } from "../../Types/ApiStatus";
 
 export interface CustomSliceMetaData {
   apiStatus: ApiStatus;

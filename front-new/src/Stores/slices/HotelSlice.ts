@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { MultipleEntitiesCustomSlice } from "./Slice";
-import { getAllHotelThunk } from "../Thunks/HotelThunks";
-import { addFetchCaseForList } from "./sliceArrayManager";
-import { ApiStatus } from "../Types/ApiStatus";
+import { getAllHotelThunk } from "../../Thunks/HotelThunks";
+import { addFetchCaseForList } from "../utils/sliceArrayManager";
+import { ApiStatus } from "../../Types/ApiStatus";
+import { MultipleEntitiesCustomSlice } from "../utils/Slice";
 
 export interface Hotel {
   id: number;

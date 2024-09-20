@@ -5,13 +5,11 @@ import "./Header.scss";
 import { Typography } from "../Atoms/Typography";
 import { useAppDispatch } from "../../Stores/store";
 import { getUserById } from "../../Thunks/userThunks";
-import {
-  useSelectorSingle,
-  useSelectorSingleMetaData,
-} from "../../Stores/selectors";
-import { User } from "../../Stores/UserSlice";
+
 import { NO_VALUES } from "../../Utils/formatReview";
 import { ApiStatus } from "../../Types/ApiStatus";
+import { useSelectorSingle, useSelectorSingleMetaData } from "../../Stores/utils/selectors";
+import { User } from "../../Stores/slices/UserSlice";
 
 // interface User {
 //   firstName?: string;

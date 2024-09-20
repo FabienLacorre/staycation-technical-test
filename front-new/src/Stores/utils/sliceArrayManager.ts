@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder, PayloadAction } from "@reduxjs/toolkit";
-import { ApiStatus } from "../Types/ApiStatus";
-import { MultipleEntitiesCustomSlice } from "./Slice";
+import { ApiStatus } from "../../Types/ApiStatus";
 import { forOwn } from "lodash";
+import { MultipleEntitiesCustomSlice } from "./Slice";
 
 function addFullfilledCaseForList<T>(
   state: MultipleEntitiesCustomSlice<T>,
