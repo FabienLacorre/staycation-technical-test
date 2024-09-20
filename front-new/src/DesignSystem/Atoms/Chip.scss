@@ -1,0 +1,12 @@
+@import "../Quarks/colors.scss";
+@import "../Quarks/size.scss";
+
+.ds-c-chip {
+  background-color: $ds-color-primary;
+  color: $ds-color-white;
+  border-radius: $ds-app-radius--XS;
+  padding: $ds-padding--XS;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

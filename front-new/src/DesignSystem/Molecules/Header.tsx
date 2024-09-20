@@ -2,6 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import StaycationLogo from "../Atoms/StaycationLogo";
 import "./Header.scss";
+import { Typography } from "../Atoms/Typography";
 
 // interface User {
 //   firstName?: string;
@@ -45,7 +46,9 @@ const Header = ({
     <div className={className}>
       <div className={classNameCenterWrapper}>
         <StaycationLogo />
-        <div className={classNameUserHello}>Welcome, fabien!</div>
+        <Typography isBold size="S" className={classNameUserHello}>
+          Welcome, fabien!
+        </Typography>
       </div>
     </div>
   );

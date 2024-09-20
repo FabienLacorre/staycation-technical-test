@@ -1,5 +1,5 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
-import { Page } from "./Components/Atoms/Page";
+import { Page } from "./DesignSystem/Atoms/Page";
 import { Dashboard } from "./Pages/Dashboard";
 import { forOwn } from "lodash";
 

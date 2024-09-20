@@ -1,0 +1,10 @@
+@import "../DesignSystem/Quarks/colors.scss";
+
+.staycation-c-hotel-desction__rating-typography {
+  color: $ds-color-text-light;
+}
+
+.staycation-c-hotel-description__title-and-rating-container {
+  display: flex;
+  justify-content: space-between;
+}

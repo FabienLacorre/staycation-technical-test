@@ -1,0 +1,19 @@
+@import "../Quarks/size.scss";
+
+.ds-c-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $ds-padding--M;
+}
+
+@media only screen and (max-width: $ds-break-point--M) {
+  .ds-c-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: $ds-break-point--S) {
+  .ds-c-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
