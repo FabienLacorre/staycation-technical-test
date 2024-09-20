@@ -1,30 +1,44 @@
 import { Content } from "../DesignSystem/Atoms/Content";
+import { Grid } from "../DesignSystem/Atoms/Grid";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../Stores/store";
+import { useEffect } from "react";
+import { getAllHotelThunk } from "../Thunks/HotelThunks";
+import { useListSelector } from "../Stores/selectors";
+import { GridItem } from "../DesignSystem/Atoms/GridItem";
 import { Card } from "../DesignSystem/Molecules/Card";
 import { HotelDescription } from "../Components/HotelDescription";
-import { Grid } from "../DesignSystem/Atoms/Grid";
-import { GridItem } from "../DesignSystem/Atoms/GridItem";
+import { Hotel } from "../Stores/HotelSlice";
 
 export const Dashboard = (): JSX.Element => {
-  const tmp = [];
-  for (let i = 0; i < 25; i++) {
-    tmp.push(i);
-  }
+  const dispatch = useAppDispatch();
+  const hotelListMetaData = useSelector(
+    (state: RootState) => state.hotel.metaData
+  );
+  const hotelList = useListSelector<Hotel>("hotel");
+
+  useEffect(() => {
+    dispatch(getAllHotelThunk());
+  }, []);
+
+  console.log("hotels", hotelList);
 
   return (
     <Content>
       <Grid>
-        {tmp.map((i) => {
+        {hotelList.map((hotel) => {
           return (
             <GridItem>
-              <Card imageUlr={"https://picsum.photos/200/300"}>
+              <Card imageUlr={hotel.picture_id}>
                 <HotelDescription
-                  title={"test hotel title"}
-                  subTitle={"test hotel subtitle"}
+                  key={`${hotel.id}-${hotel.name}`}
+                  title={hotel.name}
+                  subTitle={hotel.preview}
                   price={123}
                   oldPrice={600}
                   meanRating={4.5}
                   numberOfReviews={123}
-                  starsNumber={4}
+                  starsNumber={hotel.stars}
                 />
               </Card>
             </GridItem>

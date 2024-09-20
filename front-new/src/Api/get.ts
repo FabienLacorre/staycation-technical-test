@@ -1,6 +1,7 @@
 import axios from "axios";
 
-// Dummy API call
-export const fetchDummyData = async (id: number): Promise<any> => {
-  return axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`);
+const API_URL = "http://localhost:3000";
+
+export const fetchAllHotel = async (): Promise<any> => {
+  return axios.get(`${API_URL}/hotel/all`);
 };
