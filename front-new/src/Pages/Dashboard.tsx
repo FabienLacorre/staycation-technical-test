@@ -4,10 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../Stores/store";
 import { useEffect } from "react";
 import { getAllHotelThunk } from "../Thunks/HotelThunks";
-import {
-  useListSelector,
-  useSelectorGlobalMetaData,
-} from "../Stores/selectors";
+import { useSelectorList, useSelectorListMetaData } from "../Stores/selectors";
 import { GridItem } from "../DesignSystem/Atoms/GridItem";
 import { Card } from "../DesignSystem/Molecules/Card";
 import { HotelDescription } from "../Components/HotelDescription";
@@ -18,30 +15,26 @@ import { Typography } from "../DesignSystem/Atoms/Typography";
 
 export const Dashboard = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const hotelListMetaData = useSelectorGlobalMetaData<Hotel>("hotel");
-  const status = hotelListMetaData.apiStatus;
-  const hotelList = useListSelector<Hotel>("hotel");
+  const hotelList = useSelectorList<Hotel>("hotel");
+  const hotelListMetaData = useSelectorListMetaData<Hotel>("hotel");
 
   useEffect(() => {
-    // there is more option to make async call with react
-    // we can use libraries like react-query to make the async call
-    // i used redux-thunk to make the async call because i want to show this architecture
     dispatch(getAllHotelThunk());
   }, []);
 
-  if (status === ApiStatus.LOADING) {
+  if (hotelListMetaData.apiStatus === ApiStatus.LOADING) {
   }
 
   return (
     <Content>
       <>
-        {status === ApiStatus.FAILED ? (
+        {hotelListMetaData.apiStatus === ApiStatus.FAILED ? (
           <Typography>
             An error occured during the loading... please try later
           </Typography>
         ) : null}
-        {status === ApiStatus.LOADING ? <Loader /> : null}
-        {status === ApiStatus.SUCCEEDED ? (
+        {hotelListMetaData.apiStatus === ApiStatus.LOADING ? <Loader /> : null}
+        {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
           <Grid>
             {hotelList.map((hotel) => {
               return (

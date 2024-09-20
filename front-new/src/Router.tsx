@@ -19,7 +19,7 @@ export const pageConfiguration = {
 
 const pageRouteList: RouteObject[] = [];
 
-forOwn(pageConfiguration, (value, key) => {
+forOwn(pageConfiguration, (value, _key) => {
   pageRouteList.push({
     path: value.path,
     element: <Page withNavBar={value.withNavbar} Content={value.Content} />,

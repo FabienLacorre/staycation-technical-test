@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { ConfigureStoreEntitiesList, RootState } from "./store";
 import { MultipleEntitiesCustomSlice } from "./Slice";
 
-export function useListSelector<T>(
+export function useSelectorList<T>(
   sliceName: keyof ConfigureStoreEntitiesList
 ): T[] {
   return useSelector((state: RootState) => {
@@ -13,7 +13,7 @@ export function useListSelector<T>(
   }) as T[];
 }
 
-export function useSelectorGlobalMetaData<T>(
+export function useSelectorListMetaData<T>(
   sliceName: keyof ConfigureStoreEntitiesList
 ) {
   return useSelector((state: RootState) => {

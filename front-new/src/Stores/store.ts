@@ -15,8 +15,8 @@ export interface ConfigureStoreEntitiesList {
 
 export const store = configureStore({
   reducer: {
-    user: userSlice.reducer,
     navigation: navigationSlice.reducer,
+    user: userSlice.reducer,
     hotel: hotelSlice.reducer,
   },
 });
