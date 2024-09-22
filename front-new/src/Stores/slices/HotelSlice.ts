@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllHotelThunk } from "../../Thunks/HotelThunks";
+import { getAllOpenedHotelThunk } from "../../Thunks/HotelThunks";
 import { addFetchCaseForList } from "../utils/sliceArrayManager";
 import { ApiStatus } from "../../Types/ApiStatus";
 import { MultipleEntitiesCustomSlice } from "../utils/Slice";
@@ -12,6 +12,10 @@ export interface Hotel {
   picture_id: string;
   review_score: number;
   review_count: number;
+  is_bookable_on_date: boolean;
+  price: number;
+  discount_price: number;
+  last_bookable_date: Date;
 }
 
 export const hotelSliceInitialState: MultipleEntitiesCustomSlice<Hotel> = {
@@ -34,7 +38,7 @@ export const hotelSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    addFetchCaseForList<Hotel>(builder, getAllHotelThunk);
+    addFetchCaseForList<Hotel>(builder, getAllOpenedHotelThunk);
   },
 });
 

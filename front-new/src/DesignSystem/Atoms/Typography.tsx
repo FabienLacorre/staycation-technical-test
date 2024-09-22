@@ -7,6 +7,7 @@ export interface TypographyProps {
   isBold?: boolean;
   isBarred?: boolean;
   size?: "XS" | "S" | "M" | "L";
+  color?: "primary" | "secondary";
 }
 
 export const Typography = ({
@@ -15,12 +16,15 @@ export const Typography = ({
   size = "M",
   isBarred = false,
   className: classNameProps,
+  color = "primary",
 }: TypographyProps): JSX.Element => {
   const className = clsx(
     "ds-c-typography",
     {
       "ds-c-typography--bold": isBold,
       "ds-c-typography--barred": isBarred,
+      "ds-c-typography--primary": color === "primary",
+      "ds-c-typography--secondary": color === "secondary",
       "ds-c-typography--XS": size === "XS",
       "ds-c-typography--S": size === "S",
       "ds-c-typography--M": size === "M",

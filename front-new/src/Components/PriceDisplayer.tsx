@@ -10,19 +10,23 @@ export interface PriceDisplayerProps {
   className?: string;
   price: number;
   oldPrice: number;
+  isBookable: boolean;
 }
 export const PriceDisplayer = ({
   price,
   oldPrice,
   className: classNameProps,
+  isBookable = false,
 }: PriceDisplayerProps) => {
   const className = clsx("staycation-c-price-displayer", classNameProps);
   const reduction = formatPercent(computePercent(oldPrice, price));
 
   return (
     <div className={className}>
-      <Typography isBold>{formatPrice(price)}</Typography>
-      <Typography isBarred size="S">
+      <Typography color={isBookable === false ? "secondary" : "primary"} isBold>
+        {formatPrice(price)}
+      </Typography>
+      <Typography isBarred size="S" color="secondary">
         {formatPrice(oldPrice)}
       </Typography>
       <Chip>

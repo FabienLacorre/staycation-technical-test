@@ -1,3 +1,3 @@
 export const formatPercent = (percent: number) => {
-  return `${percent}%`;
+  return `-${percent}%`;
 };

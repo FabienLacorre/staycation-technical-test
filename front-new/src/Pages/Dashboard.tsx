@@ -1,9 +1,8 @@
 import { Content } from "../DesignSystem/Atoms/Content";
 import { Grid } from "../DesignSystem/Atoms/Grid";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../Stores/store";
+import { useAppDispatch } from "../Stores/store";
 import { useEffect } from "react";
-import { getAllHotelThunk } from "../Thunks/HotelThunks";
+import { getAllOpenedHotelThunk } from "../Thunks/HotelThunks";
 import { GridItem } from "../DesignSystem/Atoms/GridItem";
 import { Card } from "../DesignSystem/Molecules/Card";
 import { HotelDescription } from "../Components/HotelDescription";
@@ -21,8 +20,10 @@ export const Dashboard = (): JSX.Element => {
   const hotelList = useSelectorList<Hotel>("hotel");
   const hotelListMetaData = useSelectorListMetaData<Hotel>("hotel");
 
+  console.log("hotelList", hotelList);
+
   useEffect(() => {
-    dispatch(getAllHotelThunk());
+    dispatch(getAllOpenedHotelThunk());
   }, []);
 
   return (
@@ -39,15 +40,20 @@ export const Dashboard = (): JSX.Element => {
             {hotelList.map((hotel) => {
               return (
                 <GridItem key={`${hotel.id}-${hotel.name}`}>
-                  <Card imageUlr={hotel.picture_id}>
+                  <Card
+                    imageUlr={hotel.picture_id}
+                    isDisabled={hotel.is_bookable_on_date === false}
+                  >
                     <HotelDescription
                       title={hotel.name}
                       subTitle={hotel.preview}
-                      price={123}
-                      oldPrice={600}
+                      price={hotel.discount_price}
+                      oldPrice={hotel.price}
                       meanRating={hotel.review_score}
                       numberOfReviews={hotel.review_count}
                       starsNumber={hotel.stars}
+                      lastBookableDate={hotel.last_bookable_date}
+                      isBookable={hotel.is_bookable_on_date}
                     />
                   </Card>
                 </GridItem>
@@ -59,36 +65,3 @@ export const Dashboard = (): JSX.Element => {
     </Content>
   );
 };
-
-
-// select * from rooms r 
-
-// select * from sale_dates sd where id = 20
-
-// select * from openings o 
-
-
-// SELECT DISTINCT ON (hotels."name") 
-//     hotels."name", 
-//     openings."date", 
-//     rooms."name", 
-//     openings."discount_price",
-//     openings."price",
-//     openings.stock,
-//     rooms.id as room_id
-// FROM "hotels"
-// LEFT JOIN "rooms" ON "rooms"."hotel_id" = hotels."id"
-// LEFT JOIN "openings" ON "openings"."room_id" = "rooms"."id"
-// ORDER BY hotels."name", openings."discount_price" ASC, openings."date" DESC;
-
-// select * from openings 
-// LEFT JOIN "rooms" ON "rooms"."id" = openings."room_id"
-// left join hotels on hotels.id = rooms.hotel_id
-// where hotel_id = 10
-
-// where room_id  = 49
-
-// select * from rooms 
-// inner join hotels on hotels.id = rooms.hotel_id 
-// where rooms.id = 49
-

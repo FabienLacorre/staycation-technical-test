@@ -4,6 +4,7 @@ import { PriceDisplayer } from "./PriceDisplayer";
 
 import "./HotelDescription.scss";
 import { formatReview } from "../Utils/formatReview";
+import moment from "moment";
 
 export interface HotelDescriptionProps {
   title: string;
@@ -14,6 +15,8 @@ export interface HotelDescriptionProps {
   numberOfReviews: number;
   priceContainerClassName?: string;
   starsNumber: number;
+  lastBookableDate: Date;
+  isBookable: boolean;
 }
 
 export const HotelDescription = ({
@@ -25,13 +28,18 @@ export const HotelDescription = ({
   meanRating,
   numberOfReviews,
   starsNumber,
+  isBookable,
+  lastBookableDate,
 }: HotelDescriptionProps) => {
   const starsString = "*".repeat(starsNumber);
 
   return (
     <>
       <div className="staycation-c-hotel-description__title-and-rating-container">
-        <Typography isBold>
+        <Typography
+          color={isBookable === false ? "secondary" : "primary"}
+          isBold
+        >
           <>
             {title} {starsString}
           </>
@@ -45,11 +53,21 @@ export const HotelDescription = ({
       </div>
       <Typography size="S">{subTitle}</Typography>
 
-      <PriceDisplayer
-        className={priceContainerClassName}
-        price={price}
-        oldPrice={oldPrice}
-      />
+      <div className={"staycation-c--price-and-date-container"}>
+        <PriceDisplayer
+          className={priceContainerClassName}
+          price={price}
+          oldPrice={oldPrice}
+          isBookable={isBookable}
+        />
+        {isBookable === false ? (
+          <Typography size="S">
+            {`Last availability date: ${moment(lastBookableDate).format(
+              "DD/MM/YYYY"
+            )}`}
+          </Typography>
+        ) : null}
+      </div>
     </>
   );
 };

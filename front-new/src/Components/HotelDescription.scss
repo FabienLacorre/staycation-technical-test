@@ -1,4 +1,5 @@
 @import "../DesignSystem/Quarks/colors.scss";
+@import "../DesignSystem/Quarks/size.scss";
 
 .staycation-c-hotel-desction__rating-typography {
   color: $ds-color-text-light;
@@ -7,4 +8,9 @@
 .staycation-c-hotel-description__title-and-rating-container {
   display: flex;
   justify-content: space-between;
+}
+
+.staycation-c--price-and-date-container {
+  display: flex;
+  gap: $ds-padding--S;
 }

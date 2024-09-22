@@ -1,4 +1,5 @@
 @import "../Quarks/size.scss";
+@import "../Quarks/colors.scss";
 
 .ds-c-card {
   display: flex;
@@ -6,4 +7,30 @@
   overflow: hidden;
   text-align: left;
   gap: $ds-padding--S;
+  cursor: pointer;
+}
+
+.ds-c-card--enabled:hover {
+  .ds-c-picture {
+    transform: scale(1.1);
+  }
+}
+
+.ds-c-card--disabled {
+  color: $ds-color-text-light;
+  cursor: not-allowed;
+
+  .ds-c-chip {
+    background-color: $ds-color-text-light;
+  }
+
+  .ds-c-picture {
+    filter: grayscale(90%);
+  }
+}
+
+.ds-c-card--picture-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: $ds-app-radius--S;
 }
