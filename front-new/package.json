@@ -22,13 +22,27 @@
     "react-scripts": "5.0.1",
     "sass": "^1.79.2",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@storybook/addon-actions": "^7.6.17",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addon-mdx-gfm": "^7.6.17",
+    "@storybook/builder-vite": "^7.6.17",
+    "@storybook/node-logger": "^7.6.17",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-vite": "^7.6.17",
+    "@storybook/testing-library": "^0.2.0",
+    "storybook": "^7.6.17"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook-with-options": "NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 7878 -s public",
+    "storybook": "storybook dev -p 7878 -s public"
   },
   "eslintConfig": {
     "extends": [
