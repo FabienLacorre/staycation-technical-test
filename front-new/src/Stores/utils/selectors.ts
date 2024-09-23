@@ -37,3 +37,9 @@ export function useSelectorSingleMetaData<T>(
     return (state[sliceName] as any).metaData;
   });
 }
+
+export function useSelectorSingleDataListById<T>(id: number) {
+  return useSelector((state: RootState) => {
+    return (state as any).dataMap[id].data;
+  }) as T;
+}
