@@ -1,69 +1,42 @@
 # Staycation's Technical Test
 
-Welcome! This technical test aims to validate a few basic programming skills before we go further.
+Hello !
 
-The goal is to reproduce a light version of Staycation's homepage package wall.
-Some of the questions are independant, some others are sequentially dependant.
-
-Remember that the goal is not necessarily to answer all the questions, but to go far enough to show the range of your talents ;)
-Improvisation is welcome, as long as it demonstrates your ability to build great apps with us!
+Here's my solution to the technical test you suggested!
+For this test I used React for the front end and NodeJs (express) for the back end. Everything is coded in typescript.
+There's also a very basic storybook (only 2 components).
 
 ## Launch the apps
-Before starting, check that you can run the following apps:
 
-- The PostgreSQL database using `docker-compose up -V`
-- The front app using `cd front; yarn start`
-- The backend of your choice in the `back` folder, referring to its launch instruction
+- `docker-compose up -V`
+- `cd front; npm install; npm run start`
+- `cd back; npm install; npm run start`
 
-## Coding guidelines
+## Launch the storybook
 
-### Do whatever you want with the code! 💪️
-The code you just pulled is a minimal working frontend/backend app needed to answer the questions.
-This is not required, but you can install any additional package you want and do whatever you want
-with the code to show us your skills, as long as you answer the questions 😉️
+- `cd front; npm run storybook` (there's a storybook-with-options command which allows you to run the storybook according to mac versions)
 
-### Styling
-A few key points to help you through styling:
-1. App must be browsable on any decent-size desktop screen
-2. Paddings, margins & border radiuses have discrete values: 4px, 8px or any other multiple of 8
-3. Color set is located [here](front/src/styles/colors.scss)
+## front (React)
 
+- I've implemented a design system for the front, with basic components. They're in the `src/DesignSystem` folder.
+- The business components are in the `src/Components` folder.
+- There are several slice de store redux for managing application data, located in the `src/Store` folder.
+- An API folder contains calls to APIs, located in the `src/API` folder. The Thunks that encapsulate the logic are in the `src/Thunks` folder.
 
-## Ready? GO! 🏁️
+## back (NodeJs)
 
-1. Fetch hotels so it matches the hotel model described below
-2. Display hotel cards as shown in the figure below
-3. Top bar should be static while scrolling. Implement it
-4. We want the Staycation logo to be centered in the top bar, as shown in the figure below. Implement it.
-5. Display the aggregated review count & score for each package card
-6. Display the last availability on every package price. See availability definition below
-7. Take bookings into account to compute remaining stock
-8. If a package is not available on the current sale date, fetch its lowest opening price on the most recent sale date it has availabilites on (careful, it's a windowed lookup ;)). Display these availabilities in grey on the package card.
-9. (no code) How would you implement a caching strategy for this app?
+- I implemented a REST API for the back with express.
+- I've implemented an architecture with route, controller and service. Routes are in the `src/API/Routes` folder, controllers in the `src/API/Controllers` folder and services in the `src/API/Services` folder.
+- Entity and request management was done with typeorm, entities are in the `src/database/Entities` folder.
+- I chose to implement a DAL for data management, found in the `src/database/DAL` folder.
 
-### Appendix
+## Answer to the app cache question
 
-#### Expected hotel model
-```json
-{
-    "id": 1,
-    "name": "Molitor",
-    "stars": 5,
-    "preview": "Petit dej + piscine + ...",
-    "pictureId": "<img-url>",
-    
-}
-```
+it can be found in the “cache-implementation.txt” file
+It's a quick answer, but we can discuss it in more detail during the interview :)
 
-#### Hotel card
-![hotel card](./hotel-card.png)
+I hope you enjoy the project as much as I enjoyed coding it!
 
-#### Final expected result
-![final result](./final.png)
+See you soon!
 
-#### Availability definition
-- An hotel availabilities are defined by its rooms openings (easy)
-- The table `openings` has 6 interesting columns: `room_id` (malin), `sale_id`, `date`, `stock`, `price` and `discount_price`
-- An hotel is bookable on a given day only if there is at least an opening for one of its room on this date and with a stock > 0
-- The lowest availability on a sale period for an hotel is the available opening with the lowest `discount_price` on this given `sale_id`
-- The last `sale_id` for this test is (obviously) the `sale_dates` row where the date is the latest (`id 90` in our test data)
+Explication de l'achitecture du projet:
