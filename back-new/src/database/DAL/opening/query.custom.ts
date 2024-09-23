@@ -3,6 +3,10 @@ import { AppDataSource } from "../../data-source";
 export const DAL_getOpenedHotelListByPeriodList = async (
   periodList: number[]
 ) => {
+  // Better solution :
+  // A materialized view that refreshes every hour might be a better solution to avoid making this rather complex request each time a page refreshes.
+  // it is possible to write this request in another more readable way (with with or via typeorm)
+
   const rawData = await AppDataSource.manager.query(
     `
         SELECT DISTINCT ON (hotels."name")
@@ -22,7 +26,7 @@ export const DAL_getOpenedHotelListByPeriodList = async (
             WHEN available_openings."date" in (
               SELECT unnest(bookable_days) 
                 FROM sale_dates 
-                WHERE id = 90 -- prendre ici une date en params de la fonction
+                WHERE id = 90 -- TODO: prendre ici une liste de date en params de la fonction 
             ) THEN true
             ELSE false
         END AS is_bookable_on_date,

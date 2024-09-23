@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3001";
 
 export function sleep(ms = 2000): Promise<void> {
   // console.log("Simulate a delay in the API response to display loader");

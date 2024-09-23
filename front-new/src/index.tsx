@@ -10,8 +10,6 @@ import { router } from "./Router";
 
 // PUT IN ENV FILE AFTER
 
-export const API_URL = "http://localhost:3000";
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
