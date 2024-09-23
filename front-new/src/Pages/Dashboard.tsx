@@ -14,6 +14,9 @@ import {
   useSelectorList,
   useSelectorListMetaData,
 } from "../Stores/utils/selectors";
+import { Button } from "../DesignSystem/Molecules/Button";
+import { Input } from "../DesignSystem/Molecules/Input";
+import "./Dashboard.scss";
 
 export const Dashboard = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -35,6 +38,17 @@ export const Dashboard = (): JSX.Element => {
           </Typography>
         ) : null}
         {hotelListMetaData.apiStatus === ApiStatus.LOADING ? <Loader /> : null}
+
+        {/* // BONUS: input to load different sales id */}
+        {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
+          <div className="staycation-c-dashboard--input-and-button-container">
+            <div>
+              <Input />
+            </div>
+            <Button>Load with new sale id</Button>
+          </div>
+        ) : null}
+
         {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
           <>
             <Grid>

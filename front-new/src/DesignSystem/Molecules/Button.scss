@@ -1,0 +1,21 @@
+@import "../Quarks/size.scss";
+@import "../Quarks/colors.scss";
+
+.ds-c-button {
+  padding: $ds-padding--S;
+  border-radius: $ds-app-radius--XS;
+  text-align: center;
+  cursor: pointer;
+  background-color: $ds-color-primary;
+  color: $ds-color-white;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.ds-c-button:hover {
+  background-color: darken($ds-color-primary, 20%);
+}
+
+.ds-c-button:active {
+  background-color: darken($ds-color-primary, 30%);
+}
