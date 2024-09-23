@@ -1,11 +1,19 @@
+import { throwApiError } from "../../../API/router/throwApiError";
 import { AppDataSource } from "../../data-source";
 
-export const DAL_getOpenedHotelListByPeriodId = async (
-  periodId: number[]
-) => {
+export const DAL_getOpenedHotelListByPeriodId = async (periodId: number) => {
   // Better solution :
   // A materialized view that refreshes every hour might be a better solution to avoid making this rather complex request each time a page refreshes.
   // it is possible to write this request in another more readable way (with with or via typeorm)
+
+  if (
+    periodId === undefined ||
+    periodId === null ||
+    periodId < 0 ||
+    isNaN(periodId)
+  ) {
+    throwApiError(400, "Invalid periodId");
+  }
 
   const rawData = await AppDataSource.manager.query(
     `
@@ -26,7 +34,7 @@ export const DAL_getOpenedHotelListByPeriodId = async (
             WHEN available_openings."date" in (
               SELECT unnest(bookable_days) 
                 FROM sale_dates 
-                WHERE id = ${periodId} -- TODO: prendre ici une liste de date en params de la fonction 
+                WHERE id = ${periodId}
             ) THEN true
             ELSE false
         END AS is_bookable_on_date,

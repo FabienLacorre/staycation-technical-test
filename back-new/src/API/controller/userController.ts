@@ -4,8 +4,12 @@ import { sendError } from "../router/sendError";
 import { ApiError } from "../../utils/ApiError";
 
 export const getAllUserController: RequestHandler = async (req, res, next) => {
-  const users = await getAllUserService();
-  res.send(users);
+  try {
+    const users = await getAllUserService();
+    res.send(users);
+  } catch (error) {
+    sendError(res, error as ApiError);
+  }
 };
 
 export const getUserByIdController: RequestHandler = async (req, res, next) => {

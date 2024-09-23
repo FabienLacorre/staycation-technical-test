@@ -7,6 +7,7 @@ export interface InputProps {
   placeholder?: string;
   value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  min?: number;
 }
 
 export const Input = ({
@@ -15,11 +16,13 @@ export const Input = ({
   placeholder,
   value,
   onChange,
+  min,
 }: InputProps) => {
   const className = clsx("ds-c-input", classNameProps);
 
   return (
     <input
+      min={min}
       className={className}
       type={type}
       placeholder={placeholder}

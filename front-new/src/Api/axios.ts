@@ -13,6 +13,6 @@ export const axiosClient = axios.create({
 
 axiosClient.interceptors.response.use(async (response) => {
   // Simulate a delay in the API response to display loader
-  // await sleep(1500);
+  await sleep(1000);
   return response;
 });

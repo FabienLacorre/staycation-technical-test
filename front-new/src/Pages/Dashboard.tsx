@@ -40,26 +40,25 @@ export const Dashboard = (): JSX.Element => {
   return (
     <Content>
       <>
+        {/* // BONUS: input to load different sales id */}
+        <div className="staycation-c-dashboard--input-and-button-container">
+          <div>
+            <Input
+              min={0}
+              type="number"
+              value={inputValue}
+              onChange={handleChangeInpute}
+            />
+          </div>
+          <Button onClick={handleButtonClick}>Load with new sale id</Button>
+        </div>
+
         {hotelListMetaData.apiStatus === ApiStatus.FAILED ? (
           <Typography>
             An error occured during the loading... please try later
           </Typography>
         ) : null}
         {hotelListMetaData.apiStatus === ApiStatus.LOADING ? <Loader /> : null}
-
-        {/* // BONUS: input to load different sales id */}
-        {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
-          <div className="staycation-c-dashboard--input-and-button-container">
-            <div>
-              <Input
-                type="number"
-                value={inputValue}
-                onChange={handleChangeInpute}
-              />
-            </div>
-            <Button onClick={handleButtonClick}>Load with new sale id</Button>
-          </div>
-        ) : null}
 
         {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
           <>
