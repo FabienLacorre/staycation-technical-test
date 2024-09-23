@@ -2,7 +2,7 @@ import { Content } from "../DesignSystem/Atoms/Content";
 import { Grid } from "../DesignSystem/Atoms/Grid";
 import { useAppDispatch } from "../Stores/store";
 import { useEffect } from "react";
-import { getAllOpenedHotelThunk } from "../Thunks/HotelThunks";
+import { getAllOpenedHotelThunkByPeriodId } from "../Thunks/HotelThunks";
 import { GridItem } from "../DesignSystem/Atoms/GridItem";
 import { Card } from "../DesignSystem/Molecules/Card";
 import { HotelDescription } from "../Components/HotelDescription";
@@ -23,7 +23,7 @@ export const Dashboard = (): JSX.Element => {
   console.log("hotelList", hotelList);
 
   useEffect(() => {
-    dispatch(getAllOpenedHotelThunk());
+    dispatch(getAllOpenedHotelThunkByPeriodId({ periodId: 90 }));
   }, []);
 
   return (
@@ -36,30 +36,32 @@ export const Dashboard = (): JSX.Element => {
         ) : null}
         {hotelListMetaData.apiStatus === ApiStatus.LOADING ? <Loader /> : null}
         {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
-          <Grid>
-            {hotelList.map((hotel) => {
-              return (
-                <GridItem key={`${hotel.id}-${hotel.name}`}>
-                  <Card
-                    imageUlr={hotel.picture_id}
-                    isDisabled={hotel.is_bookable_on_date === false}
-                  >
-                    <HotelDescription
-                      title={hotel.name}
-                      subTitle={hotel.preview}
-                      price={hotel.discount_price}
-                      oldPrice={hotel.price}
-                      meanRating={hotel.review_score}
-                      numberOfReviews={hotel.review_count}
-                      starsNumber={hotel.stars}
-                      lastBookableDate={hotel.last_bookable_date}
-                      isBookable={hotel.is_bookable_on_date}
-                    />
-                  </Card>
-                </GridItem>
-              );
-            })}
-          </Grid>
+          <>
+            <Grid>
+              {hotelList.map((hotel) => {
+                return (
+                  <GridItem key={`${hotel.id}-${hotel.name}`}>
+                    <Card
+                      imageUlr={hotel.picture_id}
+                      isDisabled={hotel.is_bookable_on_date === false}
+                    >
+                      <HotelDescription
+                        title={hotel.name}
+                        subTitle={hotel.preview}
+                        price={hotel.discount_price}
+                        oldPrice={hotel.price}
+                        meanRating={hotel.review_score}
+                        numberOfReviews={hotel.review_count}
+                        starsNumber={hotel.stars}
+                        lastBookableDate={hotel.last_bookable_date}
+                        isBookable={hotel.is_bookable_on_date}
+                      />
+                    </Card>
+                  </GridItem>
+                );
+              })}
+            </Grid>
+          </>
         ) : null}
       </>
     </Content>

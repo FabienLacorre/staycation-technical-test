@@ -18,8 +18,8 @@ export const getOpenedHotelListByPeriodList: RequestHandler = async (
   res,
   _next
 ) => {
-  const { periodList } = req.params;
-  console.log("getOpenedHotelListByPeriodList: periodList: ", periodList);
-  const hotels = await getOpenedHotelListByPeriodListService(req.body);
+  const { periodId } = req.query;
+  
+  const hotels = await getOpenedHotelListByPeriodListService(periodId);
   res.send(hotels);
 };

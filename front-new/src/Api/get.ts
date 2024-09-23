@@ -4,8 +4,16 @@ export const fetchAllHotel = async (): Promise<any> => {
   return axiosClient.get(`/hotel/all`);
 };
 
-export const fetchAllOpenedHotel = async (): Promise<any> => {
-  return axiosClient.get(`/hotel/opened`);
+export const fetchAllOpenedHotelByPeriodId = async ({
+  periodId,
+}: {
+  periodId: number;
+}): Promise<any> => {
+  return axiosClient.get(`/hotel/opened`, {
+    params: {
+      periodId,
+    },
+  });
 };
 
 export const fetchUserById = async (userId: number): Promise<any> => {

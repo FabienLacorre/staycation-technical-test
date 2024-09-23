@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllOpenedHotelThunk } from "../../Thunks/HotelThunks";
+import { getAllOpenedHotelThunkByPeriodId } from "../../Thunks/HotelThunks";
 import { addFetchCaseForList } from "../utils/sliceArrayManager";
 import { ApiStatus } from "../../Types/ApiStatus";
 import { MultipleEntitiesCustomSlice } from "../utils/Slice";
@@ -38,7 +38,7 @@ export const hotelSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    addFetchCaseForList<Hotel>(builder, getAllOpenedHotelThunk);
+    addFetchCaseForList<Hotel>(builder, getAllOpenedHotelThunkByPeriodId);
   },
 });
 

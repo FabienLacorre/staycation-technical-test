@@ -1,7 +1,7 @@
 import { AppDataSource } from "../../data-source";
 
-export const DAL_getOpenedHotelListByPeriodList = async (
-  periodList: number[]
+export const DAL_getOpenedHotelListByPeriodId = async (
+  periodId: number[]
 ) => {
   // Better solution :
   // A materialized view that refreshes every hour might be a better solution to avoid making this rather complex request each time a page refreshes.
@@ -26,7 +26,7 @@ export const DAL_getOpenedHotelListByPeriodList = async (
             WHEN available_openings."date" in (
               SELECT unnest(bookable_days) 
                 FROM sale_dates 
-                WHERE id = 90 -- TODO: prendre ici une liste de date en params de la fonction 
+                WHERE id = ${periodId} -- TODO: prendre ici une liste de date en params de la fonction 
             ) THEN true
             ELSE false
         END AS is_bookable_on_date,

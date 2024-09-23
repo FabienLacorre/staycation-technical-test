@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchAllHotel, fetchAllOpenedHotel } from "../Api/get";
+import { fetchAllHotel, fetchAllOpenedHotelByPeriodId } from "../Api/get";
 
 export const getAllHotelThunk = createAsyncThunk(
   "api/hotel/get/all",
@@ -9,10 +9,10 @@ export const getAllHotelThunk = createAsyncThunk(
   }
 );
 
-export const getAllOpenedHotelThunk = createAsyncThunk(
+export const getAllOpenedHotelThunkByPeriodId = createAsyncThunk(
   "api/hotel/get/opened",
-  async () => {
-    const response = await fetchAllOpenedHotel();
+  async ({ periodId }: { periodId: number }) => {
+    const response = await fetchAllOpenedHotelByPeriodId({ periodId });
     return response.data;
   }
 );
