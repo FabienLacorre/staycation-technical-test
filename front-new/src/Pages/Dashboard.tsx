@@ -1,7 +1,7 @@
 import { Content } from "../DesignSystem/Atoms/Content";
 import { Grid } from "../DesignSystem/Atoms/Grid";
 import { useAppDispatch } from "../Stores/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllOpenedHotelThunkByPeriodId } from "../Thunks/HotelThunks";
 import { GridItem } from "../DesignSystem/Atoms/GridItem";
 import { Card } from "../DesignSystem/Molecules/Card";
@@ -23,11 +23,19 @@ export const Dashboard = (): JSX.Element => {
   const hotelList = useSelectorList<Hotel>("hotel");
   const hotelListMetaData = useSelectorListMetaData<Hotel>("hotel");
 
-  console.log("hotelList", hotelList);
-
   useEffect(() => {
     dispatch(getAllOpenedHotelThunkByPeriodId({ periodId: 90 }));
   }, []);
+
+  const [inputValue, setInputValue] = useState(90);
+
+  const handleChangeInpute = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value as any);
+  };
+
+  const handleButtonClick = () => {
+    dispatch(getAllOpenedHotelThunkByPeriodId({ periodId: inputValue }));
+  };
 
   return (
     <Content>
@@ -43,9 +51,13 @@ export const Dashboard = (): JSX.Element => {
         {hotelListMetaData.apiStatus === ApiStatus.SUCCEEDED ? (
           <div className="staycation-c-dashboard--input-and-button-container">
             <div>
-              <Input />
+              <Input
+                type="number"
+                value={inputValue}
+                onChange={handleChangeInpute}
+              />
             </div>
-            <Button>Load with new sale id</Button>
+            <Button onClick={handleButtonClick}>Load with new sale id</Button>
           </div>
         ) : null}
 
