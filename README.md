@@ -29,6 +29,9 @@ See you soon!
 - There are several slice de store redux for managing application data, located in the `src/Store` folder.
 - An API folder contains calls to APIs, located in the `src/API` folder. The Thunks that encapsulate the logic are in the `src/Thunks` folder.
 
+  ![image](https://github.com/user-attachments/assets/831e5850-cc2b-4a29-9f97-d405cbacfde7)
+
+
 ### back (NodeJs)
 
 - I implemented a REST API for the back with express.
