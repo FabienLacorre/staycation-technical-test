@@ -6,6 +6,10 @@ Here's my solution to the technical test you suggested!
 For this test I used React for the front end and NodeJs (express) for the back end. Everything is coded in typescript.
 There's also a very basic storybook (only 2 components).
 
+I hope you enjoy the project as much as I enjoyed coding it!
+
+See you soon!
+
 ## Launch the apps
 
 - `docker-compose up -V`
@@ -36,9 +40,3 @@ There's also a very basic storybook (only 2 components).
 
 it can be found in the “cache-implementation.md" file
 It's a quick answer, but we can discuss it in more detail during the interview :)
-
-I hope you enjoy the project as much as I enjoyed coding it!
-
-See you soon!
-
-
