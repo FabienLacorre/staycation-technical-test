@@ -78,7 +78,6 @@ export const Dashboard = (): JSX.Element => {
                         meanRating={hotel.review_score}
                         numberOfReviews={hotel.review_count}
                         starsNumber={hotel.stars}
-                        lastBookableDate={hotel.last_bookable_date}
                         isBookable={hotel.is_bookable_on_date}
                       />
                     </Card>

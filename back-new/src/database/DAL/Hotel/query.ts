@@ -18,6 +18,5 @@ export const DAL_getAllHotels = async () => {
     .addGroupBy("hotel.name")
     .orderBy("hotel.id", "ASC");
 
-  console.log("DAL_getAllHotels: HotelRepository: ", HotelRepository.getSql());
   return HotelRepository.getRawMany();
 };

@@ -15,7 +15,6 @@ export interface HotelDescriptionProps {
   numberOfReviews: number;
   priceContainerClassName?: string;
   starsNumber: number;
-  lastBookableDate: Date;
   isBookable: boolean;
 }
 
@@ -29,7 +28,6 @@ export const HotelDescription = ({
   numberOfReviews,
   starsNumber,
   isBookable,
-  lastBookableDate,
 }: HotelDescriptionProps) => {
   const starsString = "*".repeat(starsNumber);
 
@@ -60,13 +58,6 @@ export const HotelDescription = ({
           oldPrice={oldPrice}
           isBookable={isBookable}
         />
-        {isBookable === false ? (
-          <Typography size="S">
-            {`Last availability date: ${moment(lastBookableDate).format(
-              "DD/MM/YYYY"
-            )}`}
-          </Typography>
-        ) : null}
       </div>
     </>
   );
